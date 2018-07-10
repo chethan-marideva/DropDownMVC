@@ -10,39 +10,42 @@ namespace DropDownMVC.Controllers
 {
     public class CustomerController : Controller
     {
+
+        private ICustomerRepository CustomerRepo;
+
+        public CustomerController(ICustomerRepository CustomerRepo)
+        {
+            this.CustomerRepo = CustomerRepo;
+        }
+
+        //[OutputCache(Duration =3600)]
         // GET: Customer
+        [CustomFilters]
         public ActionResult Index()
         {
-
-            var repo = new CustomersRepository();
-
-            var customersList = repo.GetCustomers();
-
+            var customersList = CustomerRepo.GetCustomers();
             return View(customersList);
         }
 
 
-
         public ActionResult Create()
         {
-            var repo = new CustomersRepository();
 
-            var customer = repo.CreateCustomer();
-
+            var customer = CustomerRepo.CreateCustomer();
             return View(customer);
 
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "CustomerID, CustomerName, SelectedCountryIso3, SelectedRegionCode")] CustomerEditViewModel model) {
+        public ActionResult Create([Bind(Include = "CustomerID, CustomerName, SelectedCountryIso3, SelectedRegionCode")] CustomerEditViewModel model)
+        {
 
-            try {
+            try
+            {
 
                 if (ModelState.IsValid)
                 {
-
-                    var repo = new CustomersRepository();
-                    bool saved = repo.SaveCustomer(model);
+                    bool saved = CustomerRepo.SaveCustomer(model);
 
                     if (saved) { return RedirectToAction("Index"); }
 
@@ -51,7 +54,7 @@ namespace DropDownMVC.Controllers
 
 
                 throw new ApplicationException("Invalid Model");
-               // return View("Index");
+                // return View("Index");
 
             }
             catch (ApplicationException ex) { throw ex; }

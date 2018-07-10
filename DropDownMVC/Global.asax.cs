@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DropDownMVC.Factory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,11 @@ namespace DropDownMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
+            var factory = new CustomControllerFactory();
+
+            ControllerBuilder.Current.SetControllerFactory(factory);
         }
     }
 }

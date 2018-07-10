@@ -148,11 +148,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\CustomFilters.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\CountriesRepository.cs" />
     <Compile Include="Data\CustomersRepository.cs" />
     <Compile Include="Data\DataContext.cs" />
+    <Compile Include="Data\ICustomerRepository.cs" />
     <Compile Include="Data\RegionsRepository.cs" />
+    <Compile Include="Factory\CustomControllerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +170,18 @@
     <Compile Include="Migrations\201806180807424_UpdatedCoumlmNameForCountryRegion.cs" />
     <Compile Include="Migrations\201806180807424_UpdatedCoumlmNameForCountryRegion.Designer.cs">
       <DependentUpon>201806180807424_UpdatedCoumlmNameForCountryRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806280920243_Added TS.cs" />
+    <Compile Include="Migrations\201806280920243_Added TS.Designer.cs">
+      <DependentUpon>201806280920243_Added TS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807020918371_NotMapped.cs" />
+    <Compile Include="Migrations\201807020918371_NotMapped.Designer.cs">
+      <DependentUpon>201807020918371_NotMapped.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807020921026_NotMappedR.cs" />
+    <Compile Include="Migrations\201807020921026_NotMappedR.Designer.cs">
+      <DependentUpon>201807020921026_NotMappedR.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Country.cs" />
@@ -243,6 +258,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806180807424_UpdatedCoumlmNameForCountryRegion.resx">
       <DependentUpon>201806180807424_UpdatedCoumlmNameForCountryRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806280920243_Added TS.resx">
+      <DependentUpon>201806280920243_Added TS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807020918371_NotMapped.resx">
+      <DependentUpon>201807020918371_NotMapped.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807020921026_NotMappedR.resx">
+      <DependentUpon>201807020921026_NotMappedR.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

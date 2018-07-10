@@ -10,7 +10,7 @@ namespace DropDownMVC.Models
     public class Customer
     {
         [Key]
-        [Column(Order =1)]
+        [Column(Order = 1)]
         public Guid CustomerID { get; set; }
 
         [Required]
@@ -19,14 +19,19 @@ namespace DropDownMVC.Models
 
         [Required]
         [MaxLength(3)]
-        public string  CountryIso3 { get; set; }
+        public string CountryIso3 { get; set; }
 
         [MaxLength(3)]
         public string RegionCode { get; set; }
+
+        public DateTime InsertTS { get; set; }
 
 
         public virtual Country Country { get; set; }
 
         public virtual Region Region { get; set; }
+
+
+
     }
 }

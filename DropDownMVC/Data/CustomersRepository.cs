@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace DropDownMVC.Data
 {
-    public class CustomersRepository
+    public class CustomersRepository : ICustomerRepository
     {
 
         public IEnumerable<CustomerDisplayViewModel> GetCustomers()
@@ -20,10 +20,17 @@ namespace DropDownMVC.Data
 
                 List<Customer> customers = new List<Customer>();
 
+                //this works
+                //customers = context.Customers.AsNoTracking()
+                //    .Include(x => x.Country)
+                //    .Include(x => x.Region)
+                //    .ToList();
+
 
                 customers = context.Customers.AsNoTracking()
                     .Include(x => x.Country)
                     .Include(x => x.Region)
+                    .OrderByDescending(d => d.InsertTS)
                     .ToList();
 
                 if (customers != null)
@@ -65,14 +72,16 @@ namespace DropDownMVC.Data
             {
                 using (var context = new DataContext())
                 {
-                   
+
                     {
                         var customer = new Customer()
                         {
                             CustomerID = Guid.Parse(model.CustomerID),
                             CustomerName = model.CustomerName,
                             CountryIso3 = model.SelectedCountryIso3,
-                            RegionCode = model.SelectedRegionCode
+                            RegionCode = model.SelectedRegionCode,
+                            InsertTS = DateTime.Now
+
                         };
 
 
